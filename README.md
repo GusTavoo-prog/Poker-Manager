@@ -149,3 +149,33 @@ poke-manager/
 │   └── serena.png
 │
 └── README.md
+
+# 🛢 Banco de Dados Supabase
+
+O sistema utiliza Supabase como backend e banco de dados online.
+
+## Estrutura do Banco
+
+### Tabela treinadores
+- id
+- nome
+- cidade
+- nivel
+- equipe
+- avatar_url
+- user_id
+
+### Tabela pokemons
+- id
+- nome
+- tipo
+- nivel
+- raridade
+- data_captura
+- imagem_url
+- treinador_id
+- user_id
+
+## Relacionamento
+
+pokemons.treinador_id → treinadores.id
