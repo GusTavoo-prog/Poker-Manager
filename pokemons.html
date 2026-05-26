@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémons - PokéManager</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen animated-bg">
+  <!-- Pokédex lateral -->
+<div class="pokedex-side">
+
+  <div class="pokedex-light"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+</div>
+  <!-- Loading screen -->
+<div id="loadingScreen" class="loading-screen">
+
+  <img
+    class="loading-pokeball"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+  >
+
+  <p class="loading-text">
+    Carregando Pokédex...
+  </p>
+
+</div>
+  <!-- Menu principal -->
+  <nav class="navbar p-5">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">PokéManager</h1>
+
+      <div>
+        <a href="dashboard.html" class="menu-link">Dashboard</a>
+        <a href="treinadores.html" class="menu-link">Treinadores</a>
+        <a href="pokemons.html" class="menu-link">Pokémons</a>
+
+        <button onclick="sair()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold">
+          Sair
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content-front max-w-7xl mx-auto p-8 page-animation">
+
+    <!-- Título -->
+    <div class="mb-8">
+      <h2 class="text-5xl font-bold text-yellow-300 mb-3">
+        Capturar Pokémon
+      </h2>
+
+      <p class="text-slate-300">
+        Escolha um Pokémon da lista oficial, vincule a um treinador e o sistema criará uma carta automaticamente.
+      </p>
+    </div>
+
+    <!-- Formulário de captura -->
+    <section class="grid lg:grid-cols-2 gap-8">
+
+      <div class="card-pokemon">
+
+        <h3 class="text-2xl font-bold mb-6">
+          Dados da Captura
+        </h3>
+
+        <!-- Campo para pesquisar Pokémon -->
+        <input
+          id="buscaPokemon"
+          class="input"
+          type="text"
+          placeholder="Digite para pesquisar: pikachu, charizard, bulbasaur..."
+          oninput="filtrarPokemons()"
+        >
+
+        <!-- Lista real de Pokémons -->
+        <select id="pokemonSelect" class="input" onchange="selecionarPokemon()">
+          <option value="">Carregando Pokémons...</option>
+        </select>
+
+        <!-- Treinador -->
+        <select id="treinador" class="input">
+          <option value="">Selecione o treinador</option>
+        </select>
+
+        <!-- Nível -->
+        <input
+          id="nivel"
+          class="input"
+          type="number"
+          placeholder="Nível do Pokémon"
+        >
+
+        <!-- Raridade -->
+        <select id="raridade" class="input">
+          <option value="">Selecione a raridade</option>
+          <option value="Comum">Comum</option>
+          <option value="Raro">Raro</option>
+          <option value="Épico">Épico</option>
+          <option value="Lendário">Lendário</option>
+        </select>
+
+        <!-- Data -->
+        <input id="data" class="input" type="date">
+
+        <!-- Botão -->
+        <button onclick="salvarPokemon()" class="btn-login w-full mt-4">
+          Criar Carta e Salvar Captura
+        </button>
+
+      </div>
+
+      <!-- Prévia da carta -->
+      <div>
+        <h3 class="text-2xl font-bold text-yellow-300 mb-4">
+          Prévia da Carta
+        </h3>
+
+        <div id="previewCarta" class="pokemon-card-preview">
+          <p class="text-slate-300 text-center">
+            Escolha um Pokémon para visualizar a carta.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Cartas cadastradas -->
+    <section class="mt-12">
+      <h3 class="text-3xl font-bold text-yellow-300 mb-6">
+        Cartas Criadas
+      </h3>
+
+      <div id="listaPokemons" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+  </main>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="pokemons.js"></script>
+  
+  <script>
+  // Remove loading após carregar página
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      const loading =
+        document.getElementById("loadingScreen");
+
+      if (loading) {
+        loading.remove();
+      }
+
+    }, 1200);
+
+  });
+</script>
+</body>
+</html>

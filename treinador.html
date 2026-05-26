@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Treinador - PokéManager</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen animated-bg">
+
+  <div class="pokedex-side">
+    <div class="pokedex-light"></div>
+    <div class="pokedex-btn"></div>
+    <div class="pokedex-btn"></div>
+    <div class="pokedex-btn"></div>
+  </div>
+
+  <nav class="navbar p-5 content-front">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">PokéManager</h1>
+
+      <div>
+        <a href="dashboard.html" class="menu-link">Dashboard</a>
+        <a href="treinadores.html" class="menu-link">Treinadores</a>
+        <a href="pokemons.html" class="menu-link">Pokémons</a>
+
+        <button onclick="sair()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold">
+          Sair
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content-front max-w-7xl mx-auto p-8 page-animation">
+
+    <section id="perfilTreinador" class="trainer-profile-card mb-12"></section>
+
+    <section>
+      <h2 class="text-4xl font-bold text-yellow-300 mb-6">
+        Cartas do Treinador
+      </h2>
+
+      <div id="cartasTreinador" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+  </main>
+
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="treinador.js"></script>
+
+</body>
+</html>

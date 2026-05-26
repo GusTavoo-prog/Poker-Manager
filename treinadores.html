@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Configuração dos caracteres -->
+  <meta charset="UTF-8">
+
+  <!-- Responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título -->
+  <title>Treinadores - PokéManager</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen animated-bg">
+  <!-- Pokédex lateral -->
+<div class="pokedex-side">
+
+  <div class="pokedex-light"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+</div>
+  <!-- Loading screen -->
+<div id="loadingScreen" class="loading-screen">
+
+  <img
+    class="loading-pokeball"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+  >
+
+  <p class="loading-text">
+    Carregando Pokédex...
+  </p>
+
+</div>
+
+  <!-- Pokémons decorativos -->
+  <img class="bg-pokemon bg-pokemon-1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png">
+  <img class="bg-pokemon bg-pokemon-2" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png">
+  <img class="bg-pokemon bg-pokemon-3" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png">
+  <img class="bg-pokemon bg-pokemon-4" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png">
+
+  <!-- Menu -->
+  <nav class="navbar p-5 content-front">
+
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+      <h1 class="text-3xl font-bold">
+        PokéManager
+      </h1>
+
+      <div>
+        <a href="dashboard.html" class="menu-link">Dashboard</a>
+        <a href="treinadores.html" class="menu-link">Treinadores</a>
+        <a href="pokemons.html" class="menu-link">Pokémons</a>
+
+        <button onclick="sair()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold">
+          Sair
+        </button>
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- Conteúdo -->
+  <main class="content-front max-w-7xl mx-auto p-8">
+
+    <!-- Título -->
+    <div class="mb-8">
+
+      <h2 class="text-5xl font-bold text-yellow-300 mb-3">
+        Criar Treinador
+      </h2>
+
+      <p class="text-slate-300">
+        Escolha um personagem do anime Pokémon e crie seu treinador.
+      </p>
+
+    </div>
+
+    <!-- Formulário -->
+    <div class="card-pokemon mb-12">
+
+      <h3 class="text-2xl font-bold mb-6">
+        Escolha o Avatar
+      </h3>
+
+      <!-- Avatares -->
+<div class="avatar-grid grid grid-cols-7 gap-4 mb-8">
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/ash.png')">
+    <img src="img/ash.png">
+    <p>Ash</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/misty.png')">
+    <img src="img/misty.png">
+    <p>Misty</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/brock.png')">
+    <img src="img/brock.png">
+    <p>Brock</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/tracey.png')">
+    <img src="img/tracey.png">
+    <p>Tracey</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/may.png')">
+    <img src="img/may.png">
+    <p>May</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/dawn.png')">
+    <img src="img/dawn.png">
+    <p>Dawn</p>
+  </div>
+
+  <div class="avatar-card" onclick="selecionarAvatar(this, 'img/serena.png')">
+    <img src="img/serena.png">
+    <p>Serena</p>
+  </div>
+
+</div>
+
+      <!-- Inputs -->
+      <div class="grid md:grid-cols-2 gap-4">
+
+        <input
+          id="nome"
+          class="input"
+          type="text"
+          placeholder="Nome do treinador"
+        >
+
+        <input
+          id="cidade"
+          class="input"
+          type="text"
+          placeholder="Cidade"
+        >
+
+        <input
+          id="nivel"
+          class="input"
+          type="number"
+          placeholder="Nível"
+        >
+
+        <select id="equipe" class="input">
+
+          <option value="">
+            Selecione a equipe
+          </option>
+
+          <option value="Valor">
+            Valor
+          </option>
+
+          <option value="Mystic">
+            Mystic
+          </option>
+
+          <option value="Instinct">
+            Instinct
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- Botão -->
+      <button onclick="salvarTreinador()" class="btn-red-pro w-full mt-5">
+  Criar Treinador
+</button>
+
+    </div>
+
+    <!-- Lista -->
+    <section>
+
+      <h3 class="text-3xl font-bold text-yellow-300 mb-6">
+        Treinadores Criados
+      </h3>
+
+      <div id="listaTreinadores" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="treinadores.js"></script>
+  
+  <script>
+  // Remove loading após carregar página
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      const loading =
+        document.getElementById("loadingScreen");
+
+      if (loading) {
+        loading.remove();
+      }
+
+    }, 1200);
+
+  });
+</script>
+</body>
+</html>

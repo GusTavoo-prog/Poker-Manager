@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Configuração dos caracteres -->
+  <meta charset="UTF-8">
+
+  <!-- Responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título -->
+  <title>Dashboard - PokéManager</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS próprio -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen animated-bg">
+  <!-- Pokédex lateral -->
+<div class="pokedex-side">
+
+  <div class="pokedex-light"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+</div>
+  <!-- Loading screen -->
+<div id="loadingScreen" class="loading-screen">
+
+  <img
+    class="loading-pokeball"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+  >
+
+  <p class="loading-text">
+    Carregando Pokédex...
+  </p>
+
+</div>
+
+  <!-- Pokémons grandes decorativos -->
+  <img class="bg-pokemon bg-pokemon-1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png">
+  <img class="bg-pokemon bg-pokemon-2" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png">
+  <img class="bg-pokemon bg-pokemon-3" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png">
+  <img class="bg-pokemon bg-pokemon-4" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png">
+
+  <!-- Menu superior -->
+  <nav class="navbar p-5 content-front">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+      <h1 class="text-3xl font-bold">
+        PokéManager
+      </h1>
+
+      <div>
+        <a href="dashboard.html" class="menu-link">Início</a>
+        <a href="treinadores.html" class="menu-link">Treinadores</a>
+        <a href="pokemons.html" class="menu-link">Pokémons</a>
+
+        <button onclick="sair()" class="bg-yellow-400 text-black px-4 py-2 rounded-lg font-bold">
+          Sair
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Conteúdo principal -->
+<main class="content-front max-w-7xl mx-auto p-8 page-animation">
+    <h2 class="text-5xl font-bold text-yellow-300 mb-3">
+      Painel Principal
+    </h2>
+
+    <p class="text-slate-300 mb-10">
+      Escolha uma opção para criar treinadores, capturar Pokémons ou acessar os perfis cadastrados.
+    </p>
+
+    <!-- Botões principais -->
+    <section class="grid md:grid-cols-2 gap-8 mb-12">
+
+      <!-- Criar treinador -->
+      <a href="treinadores.html" class="dashboard-action-card">
+
+        <img
+          class="dashboard-gif"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
+        >
+
+        <h3 class="text-3xl font-bold text-yellow-300 mb-3">
+          Criar Treinador
+        </h3>
+
+        <p class="text-slate-300">
+          Escolha avatar, equipe, cidade e nível do treinador.
+        </p>
+
+      </a>
+
+      <!-- Criar Pokémon -->
+      <a href="pokemons.html" class="dashboard-action-card">
+
+        <img
+          class="dashboard-gif"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+        >
+
+        <h3 class="text-3xl font-bold text-yellow-300 mb-3">
+          Criar Carta Pokémon
+        </h3>
+
+        <p class="text-slate-300">
+          Selecione um Pokémon oficial e gere uma carta personalizada.
+        </p>
+
+      </a>
+
+    </section>
+
+    <!-- Treinadores cadastrados -->
+    <section>
+
+      <h3 class="text-3xl font-bold text-yellow-300 mb-6">
+        Treinadores Cadastrados
+      </h3>
+
+      <div id="dashboardTreinadores" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="dashboard.js"></script>
+  
+  <script>
+  // Remove loading após carregar página
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      const loading =
+        document.getElementById("loadingScreen");
+
+      if (loading) {
+        loading.remove();
+      }
+
+    }, 1200);
+
+  });
+</script>
+</body>
+</html>

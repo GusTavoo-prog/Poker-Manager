@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Configuração dos caracteres -->
+  <meta charset="UTF-8">
+
+  <!-- Responsividade -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título da página -->
+  <title>Login - PokéManager</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen animated-bg">
+  <!-- Pokédex lateral -->
+<div class="pokedex-side">
+
+  <div class="pokedex-light"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+  <div class="pokedex-btn"></div>
+
+</div>
+  <!-- Loading screen -->
+<div id="loadingScreen" class="loading-screen">
+
+  <img
+    class="loading-pokeball"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+  >
+
+  <p class="loading-text">
+    Carregando Pokédex...
+  </p>
+
+</div>
+
+  <!-- Pokémons grandes decorativos nos cantos da tela -->
+  <img class="bg-pokemon bg-pokemon-1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
+  <img class="bg-pokemon bg-pokemon-2" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png">
+  <img class="bg-pokemon bg-pokemon-3" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png">
+  <img class="bg-pokemon bg-pokemon-4" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+
+  <!-- Conteúdo principal -->
+  <div class="login-wrapper content-front w-full max-w-5xl p-6">
+
+    <!-- Logo central com Pokébola no nome -->
+    <h1 class="logo-pokemon mb-10">
+      P<span class="pokeball-o"></span>kéManager
+    </h1>
+
+    <div class="login-grid grid md:grid-cols-2 gap-8">
+
+      <!-- Card de apresentação -->
+      <div class="card-pokemon text-center">
+
+        <h2 class="text-3xl font-bold text-yellow-300 mb-4">
+          Sistema Pokédex
+        </h2>
+
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
+          class="w-44 mx-auto pixel-img"
+        >
+
+        <p class="text-slate-200 mt-6">
+          Cadastre treinadores, capture Pokémons e organize suas cartas.
+        </p>
+
+      </div>
+
+      <!-- Card de login e cadastro -->
+      <div class="card-pokemon">
+
+        <h2 class="text-2xl font-bold text-white mb-4">
+          Criar Conta
+        </h2>
+
+        <input id="signupEmail" class="input" type="email" placeholder="Email">
+        <input id="signupPassword" class="input" type="password" placeholder="Senha">
+
+        <button onclick="criarConta()" class="btn-yellow w-full mb-8">
+          Cadastrar
+        </button>
+
+        <h2 class="text-2xl font-bold text-white mb-4">
+          Login
+        </h2>
+
+        <input id="loginEmail" class="input" type="email" placeholder="Email">
+        <input id="loginPassword" class="input" type="password" placeholder="Senha">
+
+        <button onclick="login()" class="btn-yellow w-full">
+          Entrar no Sistema
+        </button>
+        
+        <p id="mensagem" class="text-yellow-300 mt-4 text-center font-bold"></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+  <script src="auth.js"></script>
+  
+  <script>
+  // Remove loading após carregar página
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      const loading =
+        document.getElementById("loadingScreen");
+
+      if (loading) {
+        loading.remove();
+      }
+
+    }, 1200);
+
+  });
+</script>
+</body>
+</html>
